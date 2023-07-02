@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\TipoHabitacionTarifa;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class TipoHabitacion extends Model
 {
@@ -14,5 +15,10 @@ class TipoHabitacion extends Model
     public function habitacion()
     {
         return $this->belongsTo(Habitacion::class);
+    }
+
+    public function tarifa()
+    {
+        return $this->hasOne(TipoHabitacionTarifa::class);
     }
 }

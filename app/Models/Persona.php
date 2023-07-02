@@ -10,7 +10,7 @@ class Persona extends Model
 {
     use HasFactory;
 
-    public function tipoPersona()
+    public function tipoPersonas()
     {
         return $this->hasMany(TipoPersona::class, 'id', 'tipo_persona_id');
     }
