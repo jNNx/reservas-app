@@ -12,18 +12,18 @@ class Reserva extends Model
 {
     use HasFactory;
 
-    public function persona()
+    public function personas()
     {
-        return $this->hasMany(Persona::class);
+        return $this->hasMany(Persona::class, 'id', 'persona_id');
     }
 
     public function metodo_pagos()
     {
-        return $this->hasMany(MetodoPago::class);
+        return $this->hasMany(MetodoPago::class, 'id', 'metodo_pago_id');
     }
 
     public function habitaciones()
     {
-        return $this->hasMany(Habitacion::class);
+        return $this->hasMany(Habitacion::class, 'id', 'habitacion_id');
     }
 }

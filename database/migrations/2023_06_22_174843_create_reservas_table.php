@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('reservas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('habitacion_id')->constrained('habitaciones');
-            $table->foreignId('persona_id')->constrained('personas');
+            $table->foreignId('cliente_id')->constrained('personas');
+            $table->foreignId('user_id')->constrained('users');
             $table->foreignId('metodo_pago_id')->constrained('metodo_pagos');
             $table->dateTime('fecha_ingreso');
             $table->dateTime('fecha_salida');

@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('tipo_habitaciones', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');
-            $table->foreignId('tarifa_id')->constrained('tipo_habitacion_tarifas');
+            $table->float('precio');
+            $table->integer('cantidad_camas');
             $table->timestamps();
         });
     }

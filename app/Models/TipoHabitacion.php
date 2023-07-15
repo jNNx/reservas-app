@@ -16,9 +16,4 @@ class TipoHabitacion extends Model
     {
         return $this->belongsTo(Habitacion::class);
     }
-
-    public function tarifa()
-    {
-        return $this->hasOne(TipoHabitacionTarifa::class);
-    }
 }

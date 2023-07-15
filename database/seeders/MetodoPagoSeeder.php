@@ -17,7 +17,8 @@ class MetodoPagoSeeder extends Seeder
     {
         $metodos = [
             'efectivo',
-            'tarjeta'
+            'tarjeta',
+            'transferencia'
         ];
 
         foreach($metodos as $metodo)

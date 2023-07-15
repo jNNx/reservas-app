@@ -6,11 +6,13 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Persona extends Model
+class TipoUser extends Model
 {
     use HasFactory;
 
-    public function user()
+    protected $table = "tipo_users";
+
+    public function User()
     {
         return $this->belongsTo(User::class, 'id', 'user_id');
     }

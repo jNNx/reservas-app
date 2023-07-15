@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('habitaciones', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('tipo_habitacion_id')->constrained('tipo_habitaciones');
-            $table->string('descripcion');
+            //$table->string('descripcion');
             $table->boolean('disponible');
             $table->timestamps();
         });
