@@ -19,6 +19,8 @@ class TipoHabitacionSeeder extends Seeder
         {
             $t = new TipoHabitacion();
             $t->nombre = $tipo;
+            $t->precio = '2000';
+            $t->cantidad_camas = '4';
             $t->save();
         }
     }

@@ -2,16 +2,16 @@
 
 namespace App\Models;
 
-use App\Models\Reserva;
+use App\Models\TipoHabitacion;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class MetodoPago extends Model
+class TipoHabitacionTarifa extends Model
 {
     use HasFactory;
 
-    public function reserva()
+    public function tipoHabitacion()
     {
-        return $this->belongsTo(Reserva::class);
+        return $this->hasOne(TipoHabitacion::class);
     }
 }

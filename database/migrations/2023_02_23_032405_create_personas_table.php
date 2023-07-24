@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('dni');
             $table->string('telefono');
             $table->string('email')->unique();
-            $table->foreignId('tipo_persona_id')->constrained('tipo_personas');
             //$table->foreignId("pais_id")->constrained("pais");
             //$table->foreignId("provincia_id")->constrained("provincia");
             $table->timestamps();

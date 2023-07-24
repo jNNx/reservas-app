@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('habitaciones', function (Blueprint $table) {
+        Schema::create('tipo_habitacion_tarifas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('tipo_habitacion_id')->constrained('tipo_habitaciones');
-            //$table->string('descripcion');
-            $table->boolean('disponible');
+            $table->float('precio');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('habitaciones');
+        Schema::dropIfExists('tipo_habitacion_tarifas');
     }
 };

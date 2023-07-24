@@ -1,0 +1,24 @@
+{
+    "reserva":[
+        {
+            "id": 1,
+            "habitacion_id": 4,
+            "cliente_id": 3,
+            "user_id": 2,
+            "metodo_pago_id": 2,
+            "fecha_ingreso": "2023-07-27",
+            "hora_ingreso": "19:30:00",
+            "fecha_salida": "2023-07-30",
+            "importe_final": 6000
+        }
+    ],
+    "persona":[
+        {
+            "nombre": "Valentino",
+            "apellido": "Rossi",
+            "dni": 27885823,
+            "telefono": 4646464646,
+            "email": "vr46@mtgp.com"
+        }
+    ]
+}

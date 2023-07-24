@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\MetodoPago;
+use App\Models\TipoHabitacionTarifa;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class MetodoPagoSeeder extends Seeder
+class TipoHabitacionTarifaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,16 +15,15 @@ class MetodoPagoSeeder extends Seeder
      */
     public function run()
     {
-        $metodos = [
-            'efectivo',
-            'tarjeta',
-            'transferencia'
+        $tarifas = [
+            '1500',
+            '3000'
         ];
 
-        foreach($metodos as $metodo)
+        foreach($tarifas as $tarifa)
         {
-            $t = new MetodoPago();
-            $t->descripcion = $metodo;
+            $t = new TipoHabitacionTarifa();
+            $t->precio = $tarifa;
             $t->save();
         }
     }
