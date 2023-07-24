@@ -4,6 +4,7 @@ use App\Http\Controllers\HabitacionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PersonaController;
+use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\TipoHabitacionController;
 
 /*
@@ -36,4 +37,11 @@ Route::controller(TipoHabitacionController::class)->group(function () {
     Route::post('/crear-tipos-habitacion',      'store');
     Route::get('/tipos-habitacion/{id}',        'show');
     Route::get('/actualizar-tipos-habitacion',  'index');
+});
+
+Route::controller(ReservaController::class)->group(function () {
+    Route::get('/index-reserva',        'index');
+    Route::get('/reserva/{id}',         'show');
+    Route::post('/crear-reserva',       'store');
+    Route::put('/actualizar-reserva',  'update');
 });

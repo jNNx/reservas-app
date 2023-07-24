@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Reserva;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +21,8 @@ class ReservaController extends Controller
         $reserva->cliente_id = $request->cliente_id;
         $reserva->user_id = Auth::User()->id;
         $reserva->metodo_pago_id = $request->metodo_pago;
-        $reserva->fecha_ingreso = $request->fecha_ingreso;
+        $reserva->fecha_ingreso = Carbon::now()->format('d-m-Y');
+        $reserva->hora_ingreso = Carbon::now()->format('h:i');
         $reserva->fecha_salida = $request->fecha_salida;
         $reserva->importe_final = $request->importe_final;
         $reserva->save();

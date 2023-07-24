@@ -19,7 +19,7 @@ class HabitacionFactory extends Factory
     {
         return [
             'tipo_habitacion_id'    => $this->faker->randomElement([1, 2]),
-            'descripcion'           => $this->faker->sentence(),
+            //'descripcion'           => $this->faker->sentence(),
             'disponible'            => $this->faker->boolean()
         ];
     }

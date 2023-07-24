@@ -22,7 +22,6 @@ class PersonaFactory extends Factory
             'dni'               => $this->faker->unique()->numberBetween(10000000, 99999999),
             'telefono'          => $this->faker->numberBetween(1000000000, 9999999999),
             'email'             => $this->faker->unique()->safeEmail(),
-            'tipo_persona_id'   => $this->faker->randomElement([1,2]),
         ];
     }
 }

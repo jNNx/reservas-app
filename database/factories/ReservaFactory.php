@@ -17,12 +17,14 @@ class ReservaFactory extends Factory
     public function definition()
     {
         return [
-            'habitacion_id' => $this->faker->randomElement([1, 2, 3, 4, 5, 6]),
-            'persona_id'    => $this->faker->randomElement([1, 2, 3, 4, 5, 6]),
+            'habitacion_id' => $this->faker->randomElement([1, 2, 3, 4, 5]),
+            'cliente_id'    => $this->faker->randomElement([1, 2, 3, 4, 5]),
+            'user_id'       => $this->faker->randomElement([1, 2]),
             'metodo_pago_id'=> $this->faker->randomElement([1, 2]),
-            'fecha_ingreso' => $this->faker->dateTime('Y-m-d'),
+            'fecha_ingreso' => $this->faker->date('Y-m-d'),
+            'hora_ingreso'  => $this->faker->time('h:i'),
             'fecha_salida'  => $this->faker->dateTime('Y-m-d'),
-            'importe_final' => $this->faker->randomFloat()
+            'importe_final' => $this->faker->numberBetween(1000, 9999)
         ];
     }
 }

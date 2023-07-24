@@ -13,17 +13,6 @@ class PersonaController extends Controller
         return response()->json($personas, 200);
     }
 
-    /*
-    DATOS DE PRUEBA
-    {
-        "nombre": "Valentino",
-        "apellido": "Rossi",
-        "dni": 27885823,
-        "telefono": 4646464646,
-        "email": "vr46@mtgp.com",
-        "tipo_persona_id": 2,
-    }
-    */
     public function store(Request $request)
     {
         $personas = New Persona;

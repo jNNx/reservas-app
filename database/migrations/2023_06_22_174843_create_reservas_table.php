@@ -19,8 +19,9 @@ return new class extends Migration
             $table->foreignId('cliente_id')->constrained('personas');
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('metodo_pago_id')->constrained('metodo_pagos');
-            $table->dateTime('fecha_ingreso');
-            $table->dateTime('fecha_salida');
+            $table->date('fecha_ingreso');
+            $table->time('hora_ingreso');
+            $table->date('fecha_salida');
             $table->float('importe_final');
             $table->timestamps();
         });
