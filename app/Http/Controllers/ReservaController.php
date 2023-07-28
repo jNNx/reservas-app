@@ -21,10 +21,11 @@ class ReservaController extends Controller
         $habitacion = Habitacion::findOrFail($request->habitacion_id);
         if($habitacion->disponible == 1)
         {
+            $user = Auth::user();
             $reserva = New Reserva;
             $reserva->habitacion_id = $request->habitacion_id;
             $reserva->cliente_id = $request->cliente_id;
-            $reserva->user_id = 1;
+            $reserva->user_id = $user->id;
             $reserva->metodo_pago_id = $request->metodo_pago_id;
             $reserva->fecha_ingreso = Carbon::now()->format('Y-m-d');
             $reserva->hora_ingreso = Carbon::now()->format('h:i');
