@@ -3,10 +3,21 @@
         {
             "habitacion_id": 4,
             "cliente_id": 3,
-            "user_id": 2,
             "metodo_pago_id": 2,
             "fecha_salida": "2023-07-30",
             "importe_final": 6000
+        }
+    ],
+    "reserva_update":[
+        {
+            "id": 5,
+            "fecha_salida": "2023-08-02"
+        }
+    ],
+    "reserva_destroy":[
+        {
+            "reserva_id": 1,
+            "habitacion_id": 3
         }
     ],
     "persona":[

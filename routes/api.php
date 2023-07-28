@@ -51,7 +51,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/reserva/{id}',         [ReservaController::class, 'show']);
     Route::post('/crear-reserva',       [ReservaController::class, 'store']);
     Route::put('/actualizar-reserva',   [ReservaController::class, 'update']);
-    //Route::delete('/eliminar-reserva',   [ReservaController::class, 'destroy'])->middleware(['can:ELIMINAR RESERVA']);
+    Route::delete('/eliminar-reserva',   [ReservaController::class, 'destroy'])->middleware(['can:ELIMINAR RESERVA']);
 
     /** Usuario */
     Route::get('/index-usuario',                 [UserController::class, 'index']);

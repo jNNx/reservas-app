@@ -54,8 +54,15 @@ class ReservaController extends Controller
         return response()->json($updateReserva, 200);
     }
 
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $habitacion = Habitacion::findOrFail($request->habitacion_id);
+        $reserva = Reserva::findOrFail($request->reserva_id);
+        $reserva->fecha_salida = Carbon::now()->format('Y-m-d');
+        $reserva->delete();
+        $habitacion->disponible = true;
+        $habitacion->update();
+
+        return response()->json($reserva, 200);
     }
 }
