@@ -23,6 +23,7 @@ use App\Http\Controllers\TipoHabitacionController;
 Route::controller(LoginController::class)->group(function () {
     Route::post('/login',    'authenticate');
 });
+Route::get('/asignar-permisos',     [UserController::class, 'asignarPermisos']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/salir',                [LoginController::class, 'logout']);
