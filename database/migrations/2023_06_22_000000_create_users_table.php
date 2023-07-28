@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('tipo_user_id')->constrained('tipo_users');
             $table->foreignId('persona_id')->constrained('personas');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -24,6 +24,7 @@ return new class extends Migration
             $table->date('fecha_salida');
             $table->float('importe_final');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
