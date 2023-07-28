@@ -18,7 +18,19 @@
             "email": "vr46@mtgp.com"
         }
     ],
-    "user":[
+    "user_create":[
+        {
+            "nombre": "Valentino",
+            "apellido": "Rossi",
+            "dni": 27885823,
+            "telefono": 4646464646,
+            "email": "vr46@mtgp.com",
+            "username": "vale_r",
+            "password": "vale_r",
+            "tipo_user_id": 2
+        }
+    ],
+    "user_login":[
         {
             "username": "juan_r",
             "password": "juan_r"
