@@ -53,6 +53,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
     /** Usuario */
     Route::get('/index-usuario',                 [UserController::class, 'index']);
-    Route::post('/crear-usuario',                [UserController::class, 'store']);
+    Route::post('/crear-usuario',                [UserController::class, 'store'])->middleware(['can:CREAR USUARIO']);
     Route::delete('/eliminar-usuario/{id}',      [UserController::class, 'destroy'])->middleware(['can:ELIMINAR USUARIO']);
 });
