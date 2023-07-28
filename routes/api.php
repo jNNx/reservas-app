@@ -29,9 +29,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
     /* Persona */
     Route::get('/index-persona',        [PersonaController::class, 'index']);
-    Route::get('/persona/{id}',        [PersonaController::class, 'show']);
-    Route::get('/crear-persona',        [PersonaController::class, 'store']);
-    Route::get('/actualizar-persona',        [PersonaController::class, 'update']);
+    Route::get('/persona/{id}',         [PersonaController::class, 'show']);
+    Route::post('/crear-persona',       [PersonaController::class, 'store']);
+    Route::put('/actualizar-persona',   [PersonaController::class, 'update']);
 
     /* Habitacion */
     Route::get('/index-habitacion',     [HabitacionController::class, 'index']);
@@ -40,10 +40,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/actualizar-habitacion',[HabitacionController::class, 'update']);
 
     /* Tipos habitacion */
-    Route::get('/index-tipos-habitacion', [TipoHabitacionController::class, 'index']);
-    Route::post('/crear-tipos-habitacion', [TipoHabitacionController::class, 'store']);
-    Route::post('/tipos-habitacion/{id}', [TipoHabitacionController::class, 'show']);
-    Route::post('/actualizar-tipos-habitacion', [TipoHabitacionController::class, 'update']);
+    Route::get('/index-tipos-habitacion',       [TipoHabitacionController::class, 'index']);
+    Route::post('/crear-tipos-habitacion',      [TipoHabitacionController::class, 'store']);
+    Route::get('/tipos-habitacion/{id}',        [TipoHabitacionController::class, 'show']);
+    Route::put('/actualizar-tipos-habitacion',  [TipoHabitacionController::class, 'update']);
 
     /* Reserva */
     Route::get('/index-reserva',        [ReservaController::class, 'index']);
@@ -51,7 +51,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/crear-reserva',       [ReservaController::class, 'store']);
     Route::put('/actualizar-reserva',   [ReservaController::class, 'update']);
 
+    /** Usuario */
     Route::get('/index-usuario',                 [UserController::class, 'index']);
     Route::post('/crear-usuario',                [UserController::class, 'store']);
-    Route::delete('/eliminar-usuario/{id}',      [UserController::class, 'destroy']);//->middleware(['can:ELIMINAR USUARIO']);
+    Route::delete('/eliminar-usuario/{id}',      [UserController::class, 'destroy'])->middleware(['can:ELIMINAR USUARIO']);
 });
