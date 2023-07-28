@@ -35,11 +35,13 @@ class UserController extends Controller
             $user->password = Hash::make($request->password);
             $user->persona_id = $persona->id;
             $user->tipo_user_id = $request->tipo_user_id;
-            if ($request->tipo_user_id == 1) {
+            if ($request->tipo_user_id == 1) 
+            {
                 $user->givePermissionTo(['name' => 'AGREGAR USUARIO']);
                 $user->givePermissionTo(['name' => 'LISTAR RESERVAS (TODAS)']);
             }
-            if ($request->tipo_user_id == 2) {
+            else if ($request->tipo_user_id == 2) 
+            {
                 $user->givePermissionTo(['name' => 'VER RESERVA']);
             }
             if ($user->save()) {
@@ -71,5 +73,23 @@ class UserController extends Controller
         $user = User::withTrashed()->findOrFail($id);
         $user->restore();
         return response()->json($user->datos_user(), 200);
+    }
+
+    public function asignarPermisos()
+    {
+        $usuarios = User::all();
+        foreach ($usuarios as $user)
+        {
+            if($user->tipo_user_id == 1) 
+            {
+                $user->givePermissionTo(['name' => 'AGREGAR USUARIO']);
+                $user->givePermissionTo(['name' => 'LISTAR RESERVAS (TODAS)']);
+            }
+            else if($user->tipo_user_id == 2) 
+            {
+                $user->givePermissionTo(['name' => 'VER RESERVA']);
+            }
+        }
+        return $usuarios;        
     }
 }
