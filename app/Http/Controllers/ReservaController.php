@@ -29,7 +29,7 @@ class ReservaController extends Controller
             $reserva->metodo_pago_id = $request->metodo_pago_id;
             $reserva->fecha_ingreso = Carbon::now()->format('Y-m-d');
             $reserva->hora_ingreso = Carbon::now()->format('h:i');
-            $reserva->fecha_salida = $request->fecha_salida;
+            $reserva->fecha_salida = Carbon::parse($request->fecha_salida)->format('Y-m-d');
             $reserva->importe_final = $request->importe_final;
             $reserva->save();
             $habitacion->disponible = false;
