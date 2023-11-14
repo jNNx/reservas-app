@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Reserva;
+use App\Models\Habitacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,16 +18,26 @@ class ReservaController extends Controller
 
     public function store(Request $request)
     {
-        $reserva = New Reserva;
-        $reserva->cliente_id = $request->cliente_id;
-        $reserva->user_id = Auth::User()->id;
-        $reserva->metodo_pago_id = $request->metodo_pago;
-        $reserva->fecha_ingreso = Carbon::now()->format('d-m-Y');
-        $reserva->hora_ingreso = Carbon::now()->format('h:i');
-        $reserva->fecha_salida = $request->fecha_salida;
-        $reserva->importe_final = $request->importe_final;
-        $reserva->save();
-        return response()->json($reserva, 200);
+        $habitacion = Habitacion::findOrFail($request->habitacion_id);
+        if($habitacion->disponible == 1)
+        {
+            $user = Auth::user();
+            $reserva = New Reserva;
+            $reserva->habitacion_id = $request->habitacion_id;
+            $reserva->cliente_id = $request->cliente_id;
+            $reserva->user_id = $user->id;
+            $reserva->metodo_pago_id = $request->metodo_pago_id;
+            $reserva->fecha_ingreso = Carbon::now()->format('Y-m-d');
+            $reserva->hora_ingreso = Carbon::now()->format('h:i');
+            $reserva->fecha_salida = Carbon::parse($request->fecha_salida)->format('Y-m-d');
+            $reserva->importe_final = $request->importe_final;
+            $reserva->save();
+            $habitacion->disponible = false;
+            $habitacion->update();
+            return response()->json($reserva, 200);
+        }
+        else
+            return response()->json("Habitacion ocupada", 200);
     }
 
     public function show($id)
@@ -43,8 +54,15 @@ class ReservaController extends Controller
         return response()->json($updateReserva, 200);
     }
 
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $habitacion = Habitacion::findOrFail($request->habitacion_id);
+        $reserva = Reserva::findOrFail($request->reserva_id);
+        $reserva->fecha_salida = Carbon::now()->format('Y-m-d');
+        $reserva->delete();
+        $habitacion->disponible = true;
+        $habitacion->update();
+
+        return response()->json($reserva, 200);
     }
 }

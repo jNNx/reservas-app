@@ -12,7 +12,8 @@ class TipoHabitacionSeeder extends Seeder
     {
         $tipos = [
             'individual',
-            'duplex'
+            'doble individual',
+            'doble'
         ];
 
         foreach($tipos as $tipo)

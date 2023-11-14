@@ -21,7 +21,6 @@ class PersonaController extends Controller
         $personas->dni = $request->dni;
         $personas->telefono = $request->telefono;
         $personas->email = $request->email;
-        $personas->tipo_persona_id = $request->tipo_persona_id;
         $personas->save();
         return response()->json($personas, 200);
     }
@@ -40,7 +39,6 @@ class PersonaController extends Controller
         $Updatepersona->dni = $request->dni;
         $Updatepersona->telefono = $request->telefono;
         $Updatepersona->email = $request->email;
-        $Updatepersona->tipo_persona_id = $request->tipo_persona_id;
         $Updatepersona->save();
         return response()->json($Updatepersona, 200);
     }

@@ -1,10 +1,12 @@
 <?php
 
-use App\Http\Controllers\HabitacionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\HabitacionController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TipoHabitacionController;
 
 /*
@@ -18,30 +20,41 @@ use App\Http\Controllers\TipoHabitacionController;
 |
 */
 
-Route::controller(PersonaController::class)->group(function () {
-    Route::get('/index-persona',        'index');
-    Route::get('/persona/{id}',         'show');
-    Route::post('/crear-persona',       'store');
-    Route::put('/actualizar-persona',  'update');
+Route::controller(LoginController::class)->group(function () {
+    Route::post('/login',    'authenticate');
 });
+Route::get('/asignar-permisos',     [UserController::class, 'asignarPermisos']);
 
-Route::controller(HabitacionController::class)->group(function () {
-    Route::get('/index-habitacion',     'index');
-    Route::post('/crear-habitacion',    'store');
-    Route::get('/habitacion/{id}',      'show');
-    Route::put('/actualizar-habitacion','update');
-});
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/salir',                [LoginController::class, 'logout']);
 
-Route::controller(TipoHabitacionController::class)->group(function () {
-    Route::get('/index-tipos-habitacion',       'index');
-    Route::post('/crear-tipos-habitacion',      'store');
-    Route::get('/tipos-habitacion/{id}',        'show');
-    Route::get('/actualizar-tipos-habitacion',  'index');
-});
+    /* Persona */
+    Route::get('/index-persona',        [PersonaController::class, 'index']);
+    Route::get('/persona/{id}',         [PersonaController::class, 'show']);
+    Route::post('/crear-persona',       [PersonaController::class, 'store']);
+    Route::put('/actualizar-persona',   [PersonaController::class, 'update']);
 
-Route::controller(ReservaController::class)->group(function () {
-    Route::get('/index-reserva',        'index');
-    Route::get('/reserva/{id}',         'show');
-    Route::post('/crear-reserva',       'store');
-    Route::put('/actualizar-reserva',  'update');
+    /* Habitacion */
+    Route::get('/index-habitacion',     [HabitacionController::class, 'index']);
+    Route::post('/crear-habitacion',    [HabitacionController::class, 'store']);
+    Route::get('/habitacion/{id}',      [HabitacionController::class, 'show']);
+    Route::put('/actualizar-habitacion',[HabitacionController::class, 'update']);
+
+    /* Tipos habitacion */
+    Route::get('/index-tipos-habitacion',       [TipoHabitacionController::class, 'index']);
+    Route::post('/crear-tipos-habitacion',      [TipoHabitacionController::class, 'store']);
+    Route::get('/tipos-habitacion/{id}',        [TipoHabitacionController::class, 'show']);
+    Route::put('/actualizar-tipos-habitacion',  [TipoHabitacionController::class, 'update']);
+
+    /* Reserva */
+    Route::get('/index-reserva',        [ReservaController::class, 'index']);
+    Route::get('/reserva/{id}',         [ReservaController::class, 'show']);
+    Route::post('/crear-reserva',       [ReservaController::class, 'store']);
+    Route::put('/actualizar-reserva',   [ReservaController::class, 'update']);
+    Route::delete('/eliminar-reserva',   [ReservaController::class, 'destroy'])->middleware(['can:ELIMINAR RESERVA']);
+
+    /** Usuario */
+    Route::get('/index-usuario',                 [UserController::class, 'index']);
+    Route::post('/crear-usuario',                [UserController::class, 'store'])->middleware(['can:AGREGAR USUARIO']);
+    Route::delete('/eliminar-usuario/{id}',      [UserController::class, 'destroy'])->middleware(['can:ELIMINAR USUARIO']);
 });

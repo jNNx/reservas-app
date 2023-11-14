@@ -21,8 +21,8 @@ class UserSeeder extends Seeder
     {
         //Persona
         DB::insert("INSERT INTO reservas.personas (nombre, apellido, dni, telefono, email, created_at, updated_at) VALUES 
-                    ('Juan', 'Romero ', 00133700, 379456789, 'juan.r@test.com', NULL, NULL),
-                    ('Alberto', 'Sosa ', 00133702, 379456789, 'alberto.s@test.com', NULL, NULL)
+                    ('Juan', 'Romero', 00133700, 379456789, 'juan.r@test.com', NULL, NULL),
+                    ('Alberto', 'Sosa', 00133702, 379456789, 'alberto.s@test.com', NULL, NULL)
                 ");
         //User
         DB::insert("INSERT INTO reservas.users (username, tipo_user_id, persona_id, created_at, updated_at) VALUES
