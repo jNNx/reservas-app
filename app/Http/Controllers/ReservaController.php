@@ -56,6 +56,7 @@ class ReservaController extends Controller
 
     public function destroy(Request $request)
     {
+        $user = Auth::user();
         $habitacion = Habitacion::findOrFail($request->habitacion_id);
         $reserva = Reserva::findOrFail($request->reserva_id);
         $reserva->fecha_salida = Carbon::now()->format('Y-m-d');
