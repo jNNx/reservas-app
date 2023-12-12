@@ -3,10 +3,11 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\HabitacionController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TipoHabitacionController;
 
 /*
@@ -57,4 +58,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/index-usuario',                 [UserController::class, 'index']);
     Route::post('/crear-usuario',                [UserController::class, 'store'])->middleware(['can:AGREGAR USUARIO']);
     Route::delete('/eliminar-usuario/{id}',      [UserController::class, 'destroy'])->middleware(['can:ELIMINAR USUARIO']);
+
+    /** Cliente */
+    Route::post('/crear-cliente',   [ClienteController::class, 'store']);
+    Route::post('/buscar-cliente',  [ClienteController::class, 'buscarCliente']);
 });
