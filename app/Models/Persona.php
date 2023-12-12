@@ -14,4 +14,9 @@ class Persona extends Model
     {
         return $this->belongsTo(User::class, 'id', 'user_id');
     }
+
+    public function cliente()
+    {
+        return $this->belongsTo(Cliente::class, 'id', 'cliente_id');
+    }
 }
