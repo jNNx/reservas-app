@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('clientes', function (Blueprint $table) {
             $table->bigIncrements("id");
-            $table->foreignId("persona_id")->constrained("persona");
+            $table->foreignId("persona_id")->constrained("personas");
             $table->timestamps();
             $table->softDeletes();
         });

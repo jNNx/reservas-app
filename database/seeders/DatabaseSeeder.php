@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
             MetodoPagoSeeder::class,
             TipoUserSeeder::class,
             PermissionSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            ClienteSeeder::class
         ]);
     }
 }
