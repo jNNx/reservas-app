@@ -22,10 +22,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             TipoHabitacionSeeder::class,
+            HabitacionSeeder::class,
             MetodoPagoSeeder::class,
             TipoUserSeeder::class,
             PermissionSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            ClienteSeeder::class
         ]);
     }
 }

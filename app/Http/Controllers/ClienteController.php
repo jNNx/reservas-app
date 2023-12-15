@@ -27,8 +27,11 @@ class ClienteController extends Controller
 
     public function buscarCliente(Request $request)
     {
-        $persona = Persona::findOrFail($request->dni);
-        return response()->json($persona, 200);
+        $cliente = Cliente::buscarPorDni($request->dni);
+        if ($cliente == null)
+            return response()->json("No existe cliente con ese DNI", 404);
+        else
+            return response()->json($cliente, 200);
     }
 
     public function update()
