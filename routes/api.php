@@ -39,6 +39,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/index-habitacion',     [HabitacionController::class, 'index']);
     Route::post('/crear-habitacion',    [HabitacionController::class, 'store']);
     Route::get('/habitacion/{id}',      [HabitacionController::class, 'show']);
+    Route::get('/habitaciones',         [HabitacionController::class, 'habitacionesDisponibles']);
     Route::put('/actualizar-habitacion',[HabitacionController::class, 'update']);
 
     /* Tipos habitacion */
