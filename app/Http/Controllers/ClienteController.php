@@ -29,7 +29,7 @@ class ClienteController extends Controller
     {
         $cliente = Cliente::buscarPorDni($request->dni);
         if ($cliente == null)
-            return response()->json("No existe cliente con ese DNI");
+            return response()->json("No existe cliente con ese DNI", 404);
         else
             return response()->json($cliente, 200);
     }

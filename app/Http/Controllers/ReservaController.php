@@ -37,7 +37,7 @@ class ReservaController extends Controller
             return response()->json($reserva, 200);
         }
         else
-            return response()->json("Habitacion ocupada", 200);
+            return response()->json("Habitacion ocupada", 404);
     }
 
     public function show($id)

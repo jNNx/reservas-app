@@ -21,7 +21,9 @@ class Cliente extends Model
         {
             $datosCliente = DB::table('personas')
             ->where('personas.dni', $cliente->dni)
-            ->get(['personas.nombre as nombre',
+            ->join('clientes','clientes.persona_id','personas.id')
+            ->get(['clientes.id as cliente_id',
+                   'personas.nombre as nombre',
                    'personas.apellido as apellido',
                    'personas.telefono as telefono',
                    'personas.email as email']);
