@@ -7,9 +7,9 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\TipoUserSeeder;
+use Database\Seeders\HabitacionSeeder;
 use Database\Seeders\MetodoPagoSeeder;
 use Database\Seeders\TipoHabitacionSeeder;
-use Database\Seeders\TipoHabitacionTarifaSeeder;
 
 class DatabaseSeeder extends Seeder
 {

@@ -38,6 +38,18 @@ class HabitacionController extends Controller
         return response()->json($Updatehabitacion, 200);
     }
 
+    public function habitacionesDisponibles()
+    {
+        $habitaciones = Habitacion::habitacionesDisponibles();
+        return response()->json($habitaciones, 200);
+    }
+
+    public function calcularPrecio($id)
+    {
+        $habitacion = Habitacion::calcularPrecio($id);
+        return response()->json($habitacion, 200);
+    }
+
     public function destroy($id)
     {
         //

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Cliente;
 use App\Models\Reserva;
 use App\Models\Habitacion;
+use App\Models\MetodoPago;
+use App\Models\TipoHabitacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,11 +33,22 @@ class ReservaController extends Controller
             $reserva->fecha_ingreso = Carbon::now()->format('Y-m-d');
             $reserva->hora_ingreso = Carbon::now()->format('h:i');
             $reserva->fecha_salida = Carbon::parse($request->fecha_salida)->format('Y-m-d');
-            $reserva->importe_final = $request->importe_final;
+            $reserva->importe_final = Habitacion::calcularPrecio($request->habitacion_id);
             $reserva->save();
             $habitacion->disponible = false;
             $habitacion->update();
-            return response()->json($reserva, 200);
+            $cliente_datos = Cliente::find($request->cliente_id);
+            $metodo_pago = MetodoPago::find($request->metodo_pago_id);
+            $detalle = [
+                $reserva->habitacion_id,
+                $cliente_datos->persona->nombre.  $cliente_datos->persona->apellido, 
+                $user->persona->nombre. " ".$user->persona->apellido,
+                $metodo_pago->descripcion,
+                $reserva->fecha_ingreso,
+                $reserva->fecha_salida,
+                $reserva->importe_final
+            ];
+            return response()->json($detalle, 200);
         }
         else
             return response()->json("Habitacion ocupada", 404);

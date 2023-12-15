@@ -23,5 +23,23 @@ class Habitacion extends Model
         return $this->belongsTo(Reserva::class);
     }
 
+    public static function habitacionesDisponibles()
+    {
+        $habitaciones = Habitacion::all()->where('disponible', 1);
+        $array_habitaciones = collect([]);
+        foreach ($habitaciones as $habitacion)
+        {
+            $array_habitaciones->push([
+                'id' => $habitacion->id,
+            ]);
+        }
+        return $array_habitaciones;
+    }
+
+    public static function calcularPrecio($id)
+    {
+        $precio = Habitacion::where('id', $id)->get()->first();
+        return $precio->tipoHabitacion->precio;
+    }
 }
 //Habitacion::find(1)->tipoHabitacion
